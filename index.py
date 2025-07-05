@@ -49,9 +49,12 @@ optimizer = optim.Adam(model.parameters(),lr=learning_rate)
 # Train Network
 for epoch in range(num_epochs):
     for batch_idx,(data,targets) in enumerate(train_loader):
+
+        # get data to cuda if possible
         data = data.to(device=device)
         targets = targets.to(device=device)
 
+        # Get to the correct shape
         data = data.reshape(data.shape[0],-1)
 
         # forward
